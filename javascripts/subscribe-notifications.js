@@ -39,7 +39,7 @@
       socket.send(this.value);//send the finished message through the socket to the server
       this.value = "";
     }
-    socket.send()
+    socket.send("is typing...");//
     //TODO: while typing...
   }
 
