@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/azamos/party-session-app/issues"
   },
-  "homepage": "https://github.com/azamos/party-session-app#readme"
+  "homepage": "https://github.com/azamos/party-session-app#readme",
+  "dependencies": {
+    "moment": "^2.24.0"
+  }
 }
