@@ -1,0 +1,19 @@
+{
+  "name": "party-session-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azamos/party-session-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/azamos/party-session-app/issues"
+  },
+  "homepage": "https://github.com/azamos/party-session-app#readme"
+}
