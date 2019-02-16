@@ -2,12 +2,24 @@
 {
   const mainEndpoint = "ws://localhost:3000/ws/party";
 
+  let socket;
+  let currentUser;
   let eventId;
   let $myMessage;//for keepin track of event. Maybe shove to array/object?
   const $eTemplate = document.querySelector("#incoming-msg-template"); //message template
   const $inputBroadcast = document.querySelector("#broadcast"); //the user's msg's text input 
   const $subscribeButton = document.querySelector("#connect"); //to open webSocket
   const $connectedClients = document.querySelector("#connected-clients"); //htmlel showing connected clients.
+
+  function saveUserName(name){
+    currentUser = name;
+  }
+  
+  function commitLike(onWho){
+      if(currentUser !== onWho){
+        socket.send(onWho);
+      }
+  }
 
   const handleIncoming = function (event) { //handle incoming from server
     let data;
@@ -28,6 +40,15 @@
         $payload.classList.add("event-payload-item"); //add css-bs design 
         $payload.innerHTML = `<span title="${k}">${data.payload[k]}</span>`;
       }
+
+
+      const $likeButton = $msgItem.querySelector('.num-of-likes');
+      console.log(data.client);
+      $likeButton.addEventListener('click',commitLike.bind(this,data.client));//reminder to self:
+      //reminder: this is the handler for when a message is sent from server via the socket.
+      //          so, the data.client is who ever triggered the event. Q: so why do I have my issue?
+
+
       //bellow: using package to transform ugly time rep (for ex: 2131221321312) to a relative
       //and understandable rep(ex: 'a few seconds ago')
       //and do it every second
@@ -51,7 +72,7 @@
   }
 
   function connect() {
-    const socket = new WebSocket(mainEndpoint); //create connection when user presses 'subscribe'
+    /*const*/ socket = new WebSocket(mainEndpoint); //create connection when user presses 'subscribe'
     const msgSender = sendMsgAs.bind($inputBroadcast, socket);
 
     // Connection opened

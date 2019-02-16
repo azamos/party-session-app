@@ -6,6 +6,7 @@
 
   function login() {
     const auth = `Basic ${btoa(`${uname.value}:${pword.value}`)}`;
+    const name =uname.value;
     uname.value = "";
     pword.value = "";
     return fetch("http://localhost:3000/login", {
@@ -13,7 +14,7 @@
       headers: new Headers({
         Authorization: auth
       })
-    }).then(setContent);
+    }).then(setContent()).then(saveUserName(name));
   }
 }
 
