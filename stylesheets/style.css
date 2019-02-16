@@ -25,10 +25,6 @@ div#menu * {
   font-size: 2em;
 }
 
-.socket-event-client::before {
-  content: "user";
-}
-
 .socket-event::before{
   margin-right: 5px;
 }

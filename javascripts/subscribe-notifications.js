@@ -33,7 +33,7 @@
       //TODO: Likes counter per message. Users are only allowed to like msgs of other users.
       const $msgItem = $eTemplate.cloneNode(true); //clone template, and fill it with stuff(bellow).
       $msgItem.id = ""; //To avoid id issues
-      $msgItem.querySelector(".socket-event-client").innerText = data.client; //to show who triggered the event(message or login)
+      $msgItem.querySelector(".socket-event-client").innerText = data.client!==currentUser? data.client : 'Me'; //to show who triggered the event(message or login)
       $msgItem.querySelector(".socket-event-type").innerText = data.type; //type of event
       const $payload = $msgItem.querySelector(".socket-event-payload");
       for (k in data.payload) { //put the data from the server into the element that we present to the user
